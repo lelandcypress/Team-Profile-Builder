@@ -1,0 +1,24 @@
+{
+  "name": "Team-Profile-Builder",
+  "version": "1.0.0",
+  "description": "Building a team profile with Node.JS and Iquirer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lelandcypress/Team-Profile-Builder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lelandcypress/Team-Profile-Builder/issues"
+  },
+  "homepage": "https://github.com/lelandcypress/Team-Profile-Builder#readme",
+  "dependencies": {
+    "inquirer": "^8.1.1",
+    "jest": "^27.0.6"
+  }
+}
