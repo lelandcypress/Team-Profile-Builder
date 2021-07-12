@@ -1,5 +1,5 @@
 {
-  "name": "Team-Profile-Builder",
+  "name": "team-profile-builder",
   "version": "1.0.0",
   "description": "Building a team profile with Node.JS and Iquirer",
   "main": "index.js",
