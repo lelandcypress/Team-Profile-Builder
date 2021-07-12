@@ -19,8 +19,4 @@ class Employee {
   }
 }
 
-const Frank = new Employee("Frank", 1, "helloworld");
-
-//Frank.getRole();
-
 module.exports = Employee;

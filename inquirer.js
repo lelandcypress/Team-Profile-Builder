@@ -4,7 +4,7 @@ const initInquire = () => {
     .prompt([
       {
         type: "input",
-        message: "dicks out for",
+        message: "Enter Employee Name",
         name: "name",
       },
     ])
