@@ -10,6 +10,4 @@ class Manager extends Employee {
     return this.officeNumber;
   }
 }
-const earl = new Manager("earl", 24601, "noreply", 55555555);
-console.log(earl.getRole());
 module.exports = Manager;
