@@ -3,6 +3,7 @@ const fs = require("fs");
 const Engineer = require("./lib/engineer");
 const Manager = require("./lib/manager");
 const Intern = require("./lib/intern");
+let projectTeam = [];
 const addEmployee = () => {
   inquirer
     .prompt([
@@ -45,18 +46,45 @@ const addEmployee = () => {
         name: "school",
         when: (answers) => answers.role === "Intern",
       },
-      {
-        type: "list",
-        message: "Add another employee?",
-        name: "addAnother",
-        choices: ["Yes", "No"],
-      },
     ])
     .then((data) => {
-      if (data.addAnother === "Yes") {
-        addEmployee();
+      if (data.role === "Engineer") {
+        newTeamMember = new Engineer(
+          data.name,
+          data.id,
+          data.email,
+          data.github
+        );
+      } else if (data.role === "Manager") {
+        newTeamMember = new Manager(
+          data.name,
+          data.id,
+          data.email,
+          data.officeNumber
+        );
+      } else if (data.role === "Intern") {
+        newTeamMember = new Intern(data.name, data.id, data.email, data.school);
       }
-    });
+      projectTeam.push(newTeamMember);
+      let test = projectTeam[0];
+      console.log(test.getId());
+    })
+    .then(
+      prompt([
+        {
+          type: "list",
+          message: "Add another employee?",
+          name: "addAnother",
+          choices: ["Yes", "No"],
+        },
+      ]).then((data) => {
+        if (data.choices === "Yes") {
+          addEmployee();
+        } else {
+          console.log(projectTeam);
+        }
+      })
+    );
 };
 
 addEmployee();
