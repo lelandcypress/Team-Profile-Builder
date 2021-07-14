@@ -4,7 +4,25 @@ const Engineer = require("./lib/engineer");
 const Manager = require("./lib/manager");
 const Intern = require("./lib/intern");
 let projectTeam = [];
+
 const addEmployee = () => {
+  inquirer
+    .prompt([
+      {
+        type: "confirm",
+        name: "Add",
+        message: "Add Team Member?",
+      },
+    ])
+    .then((data) => {
+      if (data.Add) {
+        initInquirer();
+      } else {
+        console.log("Team Documented,rendering file");
+      }
+    });
+};
+const initInquirer = () => {
   inquirer
     .prompt([
       {
@@ -66,25 +84,8 @@ const addEmployee = () => {
         newTeamMember = new Intern(data.name, data.id, data.email, data.school);
       }
       projectTeam.push(newTeamMember);
-      let test = projectTeam[0];
-      console.log(test.getId());
-    })
-    .then(
-      prompt([
-        {
-          type: "list",
-          message: "Add another employee?",
-          name: "addAnother",
-          choices: ["Yes", "No"],
-        },
-      ]).then((data) => {
-        if (data.choices === "Yes") {
-          addEmployee();
-        } else {
-          console.log(projectTeam);
-        }
-      })
-    );
+      addEmployee();
+    });
 };
 
-addEmployee();
+initInquirer();

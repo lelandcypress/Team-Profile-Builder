@@ -19,6 +19,7 @@
   "homepage": "https://github.com/lelandcypress/Team-Profile-Builder#readme",
   "dependencies": {
     "inquirer": "^8.1.1",
+    "inquirer-recursive": "0.0.7",
     "jest": "^27.0.6"
   }
 }
