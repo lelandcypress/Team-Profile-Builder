@@ -7,8 +7,7 @@
 3. [Usage](#Usage)
 4. [License](#License)
 5. [Contribution](#Contribution)
-6. [Tests](#Tests)
-7. [Questions](#Questions)
+6. [Questions](#Questions)
 
 ## Description
 
