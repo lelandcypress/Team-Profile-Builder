@@ -107,3 +107,4 @@ const initApp = () => {
 };
 
 initApp();
+module.exports = initApp;
