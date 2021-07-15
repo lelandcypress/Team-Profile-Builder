@@ -3,8 +3,7 @@ const fs = require("fs");
 const Engineer = require("./lib/engineer");
 const Manager = require("./lib/manager");
 const Intern = require("./lib/intern");
-const { html, newHTML } = require("./lib/html");
-let projectTeam = [];
+const { startHTML, endHTML } = require("./lib/html");
 
 const addEmployee = () => {
   inquirer
@@ -19,7 +18,8 @@ const addEmployee = () => {
       if (data.Add) {
         initInquirer();
       } else {
-        console.log("Team Documented,rendering file");
+        console.log("Team Documented! Have a nice day");
+        completeRoster();
       }
     });
 };
@@ -106,6 +106,7 @@ function updateHTML(employee) {
           <p class="border border-danger">Employee ID: ${id}</p>
           <p class="border border-danger">Email: ${email} </p>
           <p class="border border-danger">Office Number: ${employee.getOfficeNumber()}</p>
+        </div>
         </div>`;
   } else if (role === "Engineer") {
     newHTML = `<div class="col-3 border mx-3 my-3">
@@ -116,7 +117,8 @@ function updateHTML(employee) {
         <div class="bg-light row">
           <p class="border border-danger">Employee ID: ${id}</p>
           <p class="border border-danger">Email: ${email} </p>
-          <p class="border border-danger">Office Number: ${employee.getGithub()}</p>
+          <p class="border border-danger">Github Profile: ${employee.getGithub()}</p>
+        </div>
         </div>`;
   } else if (role === "Intern") {
     newHTML = `<div class="col-3 border mx-3 my-3">
@@ -127,7 +129,8 @@ function updateHTML(employee) {
         <div class="bg-light row">
           <p class="border border-danger">Employee ID: ${id}</p>
           <p class="border border-danger">Email: ${email} </p>
-          <p class="border border-danger">Office Number: ${employee.getSchool()}</p>
+          <p class="border border-danger">School: ${employee.getSchool()}</p>
+        </div>
         </div>`;
   }
 
@@ -136,10 +139,16 @@ function updateHTML(employee) {
   });
 }
 
+const completeRoster = () => {
+  fs.appendFile("./dist/team.html", endHTML, function (err) {
+    if (err) console.log("Failed to create employee");
+  });
+};
+
 const initApp = () => {
-  fs.writeFile("./dist/team.html", html, (err) =>
+  fs.writeFile("./dist/team.html", startHTML, (err) =>
     err ? console.log("Failure to init") : initInquirer()
   );
 };
 
-initInquirer();
+initApp();
