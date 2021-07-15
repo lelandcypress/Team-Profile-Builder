@@ -32,7 +32,7 @@ for the output HTML, I used fs write file to generate the first 25 lines of HTML
 
 ## Usage
 
-See Walkthrough Video here:
+See Walkthrough Video here: https://drive.google.com/file/d/1VoMvyUYqw2uR-X5GvifhDP9WIDLVwJmE/view
 
 ## License
 

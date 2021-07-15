@@ -87,12 +87,13 @@ const initInquirer = () => {
         newTeamMember = new Intern(data.name, data.id, data.email, data.school);
       }
       //After object is instantiated, it is added to team.html
+      //See html.js
       updateHTML(newTeamMember);
       //User is given option to add another employee
       addEmployee();
     });
 };
-
+//closes HTML, see html.js for HTML maintenance
 const completeRoster = () => {
   fs.appendFile("./dist/team.html", endHTML, function (err) {
     if (err) console.log("Failed to create employee");
