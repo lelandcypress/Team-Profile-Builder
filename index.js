@@ -3,6 +3,7 @@ const fs = require("fs");
 const Engineer = require("./lib/engineer");
 const Manager = require("./lib/manager");
 const Intern = require("./lib/intern");
+const { html, newHTML } = require("./lib/html");
 let projectTeam = [];
 
 const addEmployee = () => {
@@ -83,9 +84,62 @@ const initInquirer = () => {
       } else if (data.role === "Intern") {
         newTeamMember = new Intern(data.name, data.id, data.email, data.school);
       }
-      projectTeam.push(newTeamMember);
+      //projectTeam.push(newTeamMember);
+      updateHTML(newTeamMember);
       addEmployee();
     });
+};
+
+function updateHTML(employee) {
+  const name = employee.name;
+  const id = employee.id;
+  const email = employee.email;
+  const role = employee.getRole();
+  let newHTML;
+  if (role === "Manager") {
+    newHTML = `<div class="col-3 border mx-3 my-3">
+        <div class="bg-primary row">
+          <h5>${name}<c/h5>
+          <h5>${role}</h5>
+        </div>
+        <div class="bg-light row">
+          <p class="border border-danger">Employee ID: ${id}</p>
+          <p class="border border-danger">Email: ${email} </p>
+          <p class="border border-danger">Office Number: ${employee.getOfficeNumber()}</p>
+        </div>`;
+  } else if (role === "Engineer") {
+    newHTML = `<div class="col-3 border mx-3 my-3">
+        <div class="bg-primary row">
+          <h5>${name}<c/h5>
+          <h5>${role}</h5>
+        </div>
+        <div class="bg-light row">
+          <p class="border border-danger">Employee ID: ${id}</p>
+          <p class="border border-danger">Email: ${email} </p>
+          <p class="border border-danger">Office Number: ${employee.getGithub()}</p>
+        </div>`;
+  } else if (role === "Intern") {
+    newHTML = `<div class="col-3 border mx-3 my-3">
+        <div class="bg-primary row">
+          <h5>${name}<c/h5>
+          <h5>${role}</h5>
+        </div>
+        <div class="bg-light row">
+          <p class="border border-danger">Employee ID: ${id}</p>
+          <p class="border border-danger">Email: ${email} </p>
+          <p class="border border-danger">Office Number: ${employee.getSchool()}</p>
+        </div>`;
+  }
+
+  fs.appendFile("./dist/team.html", newHTML, function (err) {
+    if (err) console.log("Failed to create employee");
+  });
+}
+
+const initApp = () => {
+  fs.writeFile("./dist/team.html", html, (err) =>
+    err ? console.log("Failure to init") : initInquirer()
+  );
 };
 
 initInquirer();
