@@ -4,7 +4,8 @@
   "description": "Building a team profile with Node.JS and Iquirer",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,10 @@
     "inquirer": "^8.1.1",
     "inquirer-recursive": "0.0.7",
     "jest": "^27.0.6"
-  }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "devDependencies": {}
 }

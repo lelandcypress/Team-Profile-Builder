@@ -101,10 +101,7 @@ const completeRoster = () => {
 };
 //Process starts, renders top lines of HTML, and starts inquirer once completed.
 const initApp = () => {
-  fs.writeFile("./dist/team.html", startHTML, (err) =>
-    err ? console.log("Failure to init") : initInquirer()
-  );
+  fs.writeFile("./dist/team.html", startHTML, (err) => initInquirer());
 };
 
 initApp();
-module.exports = initApp;
